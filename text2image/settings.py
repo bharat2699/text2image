@@ -38,6 +38,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 AWS_REGION = os.getenv("AWS_REGION")
+S3_BUCKET = os.getenv("S3_BUCKET")
+
 
 CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL")
 CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND")
@@ -47,6 +49,9 @@ CELERY_RESULT_SERIALIZER = os.getenv("CELERY_RESULT_SERIALIZER")
 CELERY_TIMEZONE = os.getenv("CELERY_TIMEZONE")
 CELERY_ACCEPT_CONTENT = [os.getenv("CELERY_ACCEPT_CONTENT")]
 
+SD_API_KEY = os.getenv("SD_API_KEY")
+SD_BASE_URL = os.getenv("SD_BASE_URL")
+SD_ENGINE_ID = os.getenv("SD_ENGINE_ID")
 
 # Application definition
 
@@ -127,7 +132,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 REST_FRAMEWORK = {
-    "EXCEPTION_HANDLER": "common.utility.exception.custom_exception_handler.custom_exception_handler",
+    "EXCEPTION_HANDLER": "common.utilities.exception.custom_exception_handler.custom_exception_handler",
+    "NUM_PROXIES": 1,
 }
 
 CACHES = {
@@ -157,6 +163,7 @@ USE_I18N = True
 USE_TZ = True
 
 SILENCED_SYSTEM_CHECKS = ["urls.W002"]
+APPEND_SLASH = False
 
 CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "http://localhost:8000"]
 
